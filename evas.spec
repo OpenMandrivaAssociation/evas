@@ -44,6 +44,12 @@ Provides: evas = %{version}-%{release}
 %description -n %{libname}
 Evas canvas libraries
 
+Evas is a clean display canvas API for several target display systems
+that can draw anti-aliased text, smooth super and sub-sampled scaled
+images, alpha-blend objects much and more.
+
+This package is part of the Enlightenment DR17 desktop shell.
+
 %package -n %{libname}-devel
 Summary: Enlightened Canvas Library headers and development libraries
 Group: System/Libraries
