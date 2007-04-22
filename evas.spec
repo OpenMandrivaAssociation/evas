@@ -1,6 +1,6 @@
 %define	name	evas
 %define	version 0.9.9.032
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define cvsrel 0
 
@@ -49,6 +49,7 @@ Requires: %{libname} = %{epoch}:%{version}
 Requires: %{name} = %{epoch}:%{version}
 Provides: lib%{name}-devel = %{epoch}:%{version}-%{release}
 Provides: %{name}-devel = %{epoch}:%{version}-%{release}
+Requires: edb-devel png-devel eet-devel
 
 %description -n %{libname}-devel
 Evas development headers and development libraries.
