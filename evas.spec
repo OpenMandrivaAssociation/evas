@@ -1,6 +1,6 @@
 %define	name	evas
-%define	version 0.9.9.032
-%define release %mkrel 3
+%define	version 0.9.9.037
+%define release %mkrel 1
 
 %define cvsrel 0
 
@@ -72,16 +72,11 @@ rm -fr %buildroot
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
-%{_bindir}/evas_*
-%{_datadir}/evas
-%{_libdir}/%name/*/*/*/*/*.so
-
 %files -n %{libname}
 %defattr(-,root,root)
+%doc AUTHORS COPYING README
 %{_libdir}/libevas.so.*
+%{_libdir}/%name/*/*/*/*/*.so
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
