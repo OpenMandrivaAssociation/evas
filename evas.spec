@@ -38,6 +38,8 @@ This package is part of the Enlightenment DR17 desktop shell.
 %package -n %{libname}
 Summary: Enlightened Canvas Libraries
 Group: System/Libraries
+Obsoletes: evas < 0.9.9.037
+Provides: evas = %{version}-%{release}
 
 %description -n %{libname}
 Evas canvas libraries
