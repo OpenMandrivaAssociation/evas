@@ -1,6 +1,6 @@
 %define	name	evas
 %define	version 0.9.9.037
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define cvsrel 0
 
@@ -54,7 +54,6 @@ This package is part of the Enlightenment DR17 desktop shell.
 Summary: Enlightened Canvas Library headers and development libraries
 Group: System/Libraries
 Requires: %{libname} = %{epoch}:%{version}
-Requires: %{name} = %{epoch}:%{version}
 Provides: lib%{name}-devel = %{epoch}:%{version}-%{release}
 Provides: %{name}-devel = %{epoch}:%{version}-%{release}
 Requires: edb-devel png-devel eet-devel
