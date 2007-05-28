@@ -1,6 +1,6 @@
 %define	name	evas
 %define	version 0.9.9.038
-%define release %mkrel 5
+%define release %mkrel 6
 
 %define cvsrel 0
 
@@ -21,11 +21,12 @@ BuildRoot: 	%{_tmppath}/%{name}-buildroot
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
-BuildRequires: 	eet-devel
-BuildRequires: 	edb-devel
-#BuildRequires: 	DirectFB-devel
+BuildRequires: 	eet-devel >= 0.9.10.038
+BuildRequires: 	edb-devel >= 1.0.5.007
+Buildrequires:	%{mklibname directfb}-devel
 BuildRequires:	cairo-devel
-BuildRequires:	png-devel jpeg-devel 
+BuildRequires:	png-devel, jpeg-devel 
+Buildrequires:	tiff3-devel
 #svg1-devel tiff3-devel xpm4-devel
 BuildRequires:	multiarch-utils
 
