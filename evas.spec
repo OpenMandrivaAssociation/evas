@@ -23,7 +23,7 @@ BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
 BuildRequires: 	eet-devel >= 0.9.10.038
 BuildRequires: 	edb-devel >= 1.0.5.007
-#Buildrequires:	%{mklibname directfb}-devel
+Buildrequires:	%{mklibname directfb1}-devel
 BuildRequires:	cairo-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff3-devel
