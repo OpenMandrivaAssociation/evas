@@ -66,7 +66,8 @@ Evas development headers and development libraries.
 %setup -q
 
 %build
-%configure2_5x --enable-image-loader-gif --disable-valgrind \
+%configure2_5x --enable-image-loader-gif \
+  --disable-valgrind \
   --enable-image-loader-png \
   --enable-image-loader-jpeg \
   --enable-image-loader-eet \
@@ -74,7 +75,23 @@ Evas development headers and development libraries.
   --enable-image-loader-edb \
   --enable-image-loader-tiff \
   --enable-image-loader-xpm \
-  --enable-image-loader-svg
+  --enable-image-loader-svg \
+  --enable-cpu-mmx \
+  --enable-cpu-sse \
+  --enable-cpu-c \
+  --enable-scale-sample \
+  --enable-scale-smooth \
+  --enable-convert-yuv \
+  --enable-small-dither-mask \
+  --enable-fontconfig \
+  --enable-software-x11 \
+  --enable-directfb \
+  --enable-fb \
+  --enable-buffer \
+  --enable-gl-x11 \
+  --enable-xrender-x11 \
+  --enable-xrender-xcb \
+  --enable-pthreads \
 
 #  --disable-cpu-mmx \
 #  --disable-cpu-sse \
