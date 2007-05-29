@@ -1,10 +1,8 @@
 %define	name	evas
 %define	version 0.9.9.038
-%define release %mkrel 6
+%define release %mkrel 7
 
-%define cvsrel 0
-
-%define major 	1
+%define major 1
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} %major -d
 
@@ -28,6 +26,7 @@ BuildRequires:	cairo-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	%{mklibname tiff3}-devel
 #svg1-devel tiff3-devel xpm4-devel
+Buildrequires:  mesagl-devel
 BuildRequires:	multiarch-utils
 
 %description
@@ -41,7 +40,8 @@ This package is part of the Enlightenment DR17 desktop shell.
 Summary: Enlightened Canvas Libraries
 Group: System/Libraries
 Obsoletes: evas < 1:0.9.9.037
-Provides: evas = %{epoch}:%{version}-%{release}
+Provides: evas = %{version}-%{release}
+Provides: %{libname} = %{version}-%{release}
 
 %description -n %{libname}
 Evas canvas libraries
@@ -55,9 +55,9 @@ This package is part of the Enlightenment DR17 desktop shell.
 %package -n %{libname}-devel
 Summary: Enlightened Canvas Library headers and development libraries
 Group: System/Libraries
-Requires: %{libname} = %{epoch}:%{version}
-Provides: lib%{name}-devel = %{epoch}:%{version}-%{release}
-Provides: %{name}-devel = %{epoch}:%{version}-%{release}
+Requires: %{libname} = %{version}
+Provides: %{libname}-devel = %{version}-%{release}
+Provides: %{name}-devel = %{version}-%{release}
 Requires: edb-devel png-devel eet-devel
 
 %description -n %{libname}-devel
