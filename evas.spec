@@ -1,6 +1,6 @@
 %define	name	evas
 %define	version 0.9.9.038
-%define release %mkrel 7
+%define release %mkrel 8
 
 %define major 1
 %define libname %mklibname %{name} %major
