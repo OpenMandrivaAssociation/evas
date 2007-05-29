@@ -93,6 +93,7 @@ Evas development headers and development libraries.
   --enable-xrender-x11 \
   --enable-xrender-xcb \
   --enable-pthreads \
+  --disable-ddraw \  
 
 #  --disable-cpu-mmx \
 #  --disable-cpu-sse \
