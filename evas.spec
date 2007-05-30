@@ -67,6 +67,7 @@ Evas development headers and development libraries.
 %setup -q
 
 %build
+./autogen.sh
 %configure2_5x --enable-image-loader-gif \
   --disable-valgrind \
   --enable-image-loader-png \
