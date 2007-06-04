@@ -28,7 +28,7 @@ Buildrequires:	%{mklibname tiff3}-devel
 #svg1-devel tiff3-devel xpm4-devel
 Buildrequires:  mesagl-devel
 BuildRequires:	multiarch-utils
-buildrequires:	glitz-devel, ungif-devel, %{mklibname xcb1}-devel, xpm-devel
+buildrequires:	glitz-devel, ungif-devel, %{mklibname xcb}-devel, xpm-devel
 Buildrequires:  directfb-devel
 #, libsvg-cairo1-devel
 
