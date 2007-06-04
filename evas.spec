@@ -29,7 +29,8 @@ Buildrequires:	%{mklibname tiff3}-devel
 Buildrequires:  mesagl-devel
 BuildRequires:	multiarch-utils
 buildrequires:	glitz-devel, ungif-devel, %{mklibname xcb1}-devel, xpm-devel
-Buildrequires:  directfb-devel, libsvg-cairo1-devel
+Buildrequires:  directfb-devel
+#, libsvg-cairo1-devel
 
 %description
 Evas is a clean display canvas API for several target display systems
