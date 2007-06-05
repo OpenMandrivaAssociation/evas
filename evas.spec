@@ -71,7 +71,7 @@ Evas development headers and development libraries.
 
 %build
 ./autogen.sh
-%configure2_5x --enable-image-loader-gif \
+%configure --enable-image-loader-gif \
   --disable-valgrind \
   --enable-image-loader-png \
   --enable-image-loader-jpeg \
@@ -121,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
-%{_libdir}/libevas.so.*
+%{_libdir}/libevas.so.%{major}*
 %{_libdir}/%name/*/*/*/*/*.so
 
 %files -n %{libname}-devel
@@ -134,5 +134,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/evas-config
 %multiarch %multiarch_bindir/evas-config
 %{_libdir}/pkgconfig/*
-
 
