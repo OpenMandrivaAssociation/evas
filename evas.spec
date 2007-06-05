@@ -24,7 +24,7 @@ BuildRequires: 	edb-devel >= 1.0.5.007
 #Buildrequires:	%{mklibname directfb1}-devel
 BuildRequires:	cairo-devel
 BuildRequires:	png-devel, jpeg-devel 
-Buildrequires:	%{mklibname tiff3}-devel
+Buildrequires:	tiff-devel
 #svg1-devel tiff3-devel xpm4-devel
 Buildrequires:  mesagl-devel
 BuildRequires:	multiarch-utils
