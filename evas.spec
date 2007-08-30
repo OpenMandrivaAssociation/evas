@@ -110,6 +110,7 @@ Evas development headers and development libraries.
 %install
 rm -fr %buildroot
 %makeinstall
+cp -v $RPM_BUILD_DIR/%name-%version/%name-config %buildroot/%_bindir/
 %multiarch_binaries %buildroot/%_bindir/evas-config
 
 %post -n %{libname} -p /sbin/ldconfig
