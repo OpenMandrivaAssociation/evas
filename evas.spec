@@ -19,8 +19,8 @@ BuildRoot: 	%{_tmppath}/%{name}-buildroot
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
-BuildRequires: 	eet-devel >= 0.9.10.038
-BuildRequires: 	edb-devel >= 1.0.5.007
+BuildRequires: 	eet-devel >= 0.9.10.041
+BuildRequires: 	edb-devel >= 1.0.5.008
 #Buildrequires:	%{mklibname directfb1}-devel
 BuildRequires:	cairo-devel
 BuildRequires:	png-devel, jpeg-devel 
