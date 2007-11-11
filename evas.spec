@@ -21,16 +21,12 @@ BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
 BuildRequires: 	eet-devel >= 0.9.10.041
 BuildRequires: 	edb-devel >= 1.0.5.008
-#Buildrequires:	%{mklibname directfb1}-devel
 BuildRequires:	cairo-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
-#svg1-devel tiff3-devel xpm4-devel
 Buildrequires:  mesagl-devel
 BuildRequires:	multiarch-utils
-buildrequires:	glitz-devel, ungif-devel, libxcb-devel, xpm-devel
-Buildrequires:  directfb-devel
-#, libsvg-cairo1-devel
+BuildRequires:	glitz-devel, ungif-devel, xpm-devel
 
 %description
 Evas is a clean display canvas API for several target display systems
@@ -71,7 +67,7 @@ Evas development headers and development libraries.
 
 %build
 ./autogen.sh
-%configure --enable-image-loader-gif \
+%configure2_5x --enable-image-loader-gif \
   --disable-valgrind \
   --enable-image-loader-png \
   --enable-image-loader-jpeg \
@@ -94,17 +90,10 @@ Evas development headers and development libraries.
   --enable-fb \
   --enable-buffer \
   --enable-gl-x11 \
+  --disable-gl-glew \
   --enable-xrender-x11 \
-  --enable-xrender-xcb \
   --enable-pthreads \
-  --disable-ddraw \  
-
-#  --disable-cpu-mmx \
-#  --disable-cpu-sse \
-#  --disable-valgrind \
-#  --disable-cairo-x11 \
-#  --disable-directfb \
-
+  --enable-glitz-x11
 %make
 
 %install
