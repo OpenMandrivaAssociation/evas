@@ -15,7 +15,6 @@ License: 	BSD
 Group: 		Graphical desktop/Enlightenment
 URL: 		http://www.get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
