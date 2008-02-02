@@ -1,32 +1,32 @@
 %define	name	evas
-%define version 0.9.9.041
-%define release %mkrel 3
+%define version 0.9.9.042
+%define release %mkrel 1
 
-%define major 1
+%define major 0
 %define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} %major -d
+%define libnamedev %mklibname %{name} -d
 
 Summary: 	Enlightened canvas library
 Name: 		%{name}
 Version: 	%{version}
-Epoch:		1
+Epoch:		2
 Release: 	%{release}
 License: 	BSD
 Group: 		Graphical desktop/Enlightenment
-URL: 		http://www.get-e.org/
+URL: 		http://www.enlightenment.org/
 Source: 	%{name}-%{version}.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
-BuildRequires: 	eet-devel >= 0.9.10.041
-BuildRequires: 	edb-devel >= 1.0.5.008
+BuildRequires: 	eet-devel
+BuildRequires: 	edb-devel
 BuildRequires:	cairo-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
 Buildrequires:  mesagl-devel
-BuildRequires:	multiarch-utils
 BuildRequires:	glitz-devel, ungif-devel, xpm-devel
+#BuildRequires:	glew-devel
 
 %description
 Evas is a clean display canvas API for several target display systems
@@ -38,12 +38,9 @@ This package is part of the Enlightenment DR17 desktop shell.
 %package -n %{libname}
 Summary: Enlightened Canvas Libraries
 Group: System/Libraries
-Obsoletes: evas < 1:0.9.9.037
-Provides: evas = %{version}-%{release}
-Provides: %{libname} = %{version}-%{release}
 
 %description -n %{libname}
-Evas canvas libraries
+Evas canvas libraries.
 
 Evas is a clean display canvas API for several target display systems
 that can draw anti-aliased text, smooth super and sub-sampled scaled
@@ -54,9 +51,8 @@ This package is part of the Enlightenment DR17 desktop shell.
 %package -n %{libname}-devel
 Summary: Enlightened Canvas Library headers and development libraries
 Group: System/Libraries
-Requires: %{libname} = %{version}
-Provides: %{libname}-devel = %{version}-%{release}
-Provides: %{name}-devel = %{version}-%{release}
+Requires: %{libname} = 2:%{version}
+Provides: %{name}-devel = 2:%{version}-%{release}
 Requires: edb-devel png-devel eet-devel
 
 %description -n %{libname}-devel
@@ -66,7 +62,6 @@ Evas development headers and development libraries.
 %setup -q
 
 %build
-./autogen.sh
 %configure2_5x --enable-image-loader-gif \
   --disable-valgrind \
   --enable-image-loader-png \
@@ -99,8 +94,6 @@ Evas development headers and development libraries.
 %install
 rm -fr %buildroot
 %makeinstall
-cp -v $RPM_BUILD_DIR/%name-%version/%name-config %buildroot/%_bindir/
-%multiarch_binaries %buildroot/%_bindir/evas-config
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -111,7 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
-%{_libdir}/libevas.so.%{major}*
+%{_libdir}/libevas.so.*
 %{_libdir}/%name/*/*/*/*/*.so
 
 %files -n %{libname}-devel
@@ -121,7 +114,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%name/*/*/*/*/*.la
 %{_libdir}/%name/*/*/*/*/*.a
 %{_includedir}/*.h
-%{_bindir}/evas-config
-%multiarch %multiarch_bindir/evas-config
 %{_libdir}/pkgconfig/*
 
