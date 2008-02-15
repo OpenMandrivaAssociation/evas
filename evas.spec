@@ -1,6 +1,6 @@
 %define	name	evas
 %define version 0.9.9.042
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -19,8 +19,8 @@ BuildRoot: 	%{_tmppath}/%{name}-buildroot
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
-BuildRequires: 	eet-devel
-BuildRequires: 	edb-devel
+BuildRequires: 	eet-devel >= 0.9.10.042
+BuildRequires: 	edb-devel >= 1.0.5.042
 BuildRequires:	cairo-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
