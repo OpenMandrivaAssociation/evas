@@ -21,7 +21,7 @@ BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
 BuildRequires: 	eet-devel >= 0.9.10.042
 BuildRequires: 	edb-devel >= 1.0.5.042
-BuildRequires:	cairo-devel
+BuildRequires:	cairo-devel SDL-devel directfb-devel %{mklibname xcb}-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
 Buildrequires:  mesagl-devel
@@ -81,12 +81,15 @@ Evas development headers and development libraries.
   --enable-small-dither-mask \
   --enable-fontconfig \
   --enable-software-x11 \
+  --enable-software-xcb \
+  --enable-software-sdl \
   --enable-directfb \
   --enable-fb \
   --enable-buffer \
   --enable-gl-x11 \
   --disable-gl-glew \
   --enable-xrender-x11 \
+  --enable-xrender-xcb \
   --enable-pthreads \
   --enable-glitz-x11
 %make
@@ -105,14 +108,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
 %{_libdir}/libevas.so.*
-%{_libdir}/%name/*/*/*/*/*.so
+%{_libdir}/%name/modules/engines/*/*/*.so
+%{_libdir}/%name/modules/loaders/*/*/*.so
+%{_libdir}/%name/modules/savers/*/*/*.so
 
 %files -n %{libname}-devel
 %defattr(-,root,root)
 %{_libdir}/libevas.so
 %{_libdir}/libevas.*a
-%{_libdir}/%name/*/*/*/*/*.la
-%{_libdir}/%name/*/*/*/*/*.a
+%{_libdir}/%name/modules/savers/*/*/*.la
+%{_libdir}/%name/modules/loaders/*/*/*.la
+%{_libdir}/%name/modules/engines/*/*/*.la
 %{_includedir}/*.h
 %{_libdir}/pkgconfig/*
-
