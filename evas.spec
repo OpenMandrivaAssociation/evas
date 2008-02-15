@@ -21,7 +21,9 @@ BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
 BuildRequires: 	eet-devel >= 0.9.10.042
 BuildRequires: 	edb-devel >= 1.0.5.042
-BuildRequires:	cairo-devel SDL-devel directfb-devel %{mklibname xcb}-devel
+BuildRequires:	cairo-devel SDL-devel directfb-devel 
+# should be xcb-devel or %{mklibname xcb}-devel
+Buildrequires:  libxcb-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
 Buildrequires:  mesagl-devel
