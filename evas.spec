@@ -16,6 +16,7 @@ Group: 		Graphical desktop/Enlightenment
 URL: 		http://www.enlightenment.org/
 Source: 	%{name}-%{version}.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
+conflicts:	%{mklibname evas1}-devel
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
@@ -55,6 +56,7 @@ Summary: Enlightened Canvas Library headers and development libraries
 Group: System/Libraries
 Requires: %{libname} = 2:%{version}
 Provides: %{name}-devel = 2:%{version}-%{release}
+conflicts:	%{mklibname evas1}-devel
 Requires: edb-devel png-devel eet-devel
 
 %description -n %{libname}-devel
