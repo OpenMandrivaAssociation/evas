@@ -121,8 +121,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_libdir}/libevas.so
 %{_libdir}/libevas.*a
-%{_libdir}/%name/modules/savers/*/*/*.la
-%{_libdir}/%name/modules/loaders/*/*/*.la
-%{_libdir}/%name/modules/engines/*/*/*.la
+%{_libdir}/%name/modules/savers/*/*/*.*a
+%{_libdir}/%name/modules/loaders/*/*/*.*a
+%{_libdir}/%name/modules/engines/*/*/*.*a
 %{_includedir}/*.h
 %{_libdir}/pkgconfig/*
