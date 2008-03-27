@@ -1,6 +1,6 @@
 %define	name	evas
 %define version 0.9.9.042
-%define release %mkrel 3
+%define release %mkrel 4
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -16,7 +16,7 @@ Group: 		Graphical desktop/Enlightenment
 URL: 		http://www.enlightenment.org/
 Source: 	%{name}-%{version}.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-conflicts:	%{mklibname evas1}-devel
+Conflicts:	%{mklibname evas1}-devel
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
@@ -41,6 +41,7 @@ This package is part of the Enlightenment DR17 desktop shell.
 %package -n %{libname}
 Summary: Enlightened Canvas Libraries
 Group: System/Libraries
+Conflicts:	%{mklibname evas1}
 
 %description -n %{libname}
 Evas canvas libraries.
@@ -56,7 +57,7 @@ Summary: Enlightened Canvas Library headers and development libraries
 Group: System/Libraries
 Requires: %{libname} = 2:%{version}
 Provides: %{name}-devel = 2:%{version}-%{release}
-conflicts:	%{mklibname evas1}-devel
+Conflicts:	%{mklibname evas1}-devel
 Requires: edb-devel png-devel eet-devel
 
 %description -n %{libname}-devel
