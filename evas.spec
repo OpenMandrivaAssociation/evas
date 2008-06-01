@@ -22,14 +22,12 @@ BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
 BuildRequires: 	eet-devel >= 0.9.10.042
 BuildRequires: 	edb-devel >= 1.0.5.042
-BuildRequires:	cairo-devel SDL-devel directfb-devel 
-# should be xcb-devel or %{mklibname xcb}-devel
+BuildRequires:	cairo-devel 
 Buildrequires:  libxcb-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
 Buildrequires:  mesagl-devel
 BuildRequires:	glitz-devel, ungif-devel, xpm-devel
-#BuildRequires:	glew-devel
 
 %description
 Evas is a clean display canvas API for several target display systems
@@ -91,8 +89,6 @@ export CFLAGS="%{optflags} -leet"
   --enable-software-x11 \
   --enable-software-16-x11 \
   --enable-software-xcb \
-  --enable-software-sdl \
-  --enable-directfb \
   --enable-fb \
   --enable-buffer \
   --enable-gl-x11 \
