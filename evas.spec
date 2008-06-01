@@ -1,6 +1,6 @@
 %define	name	evas
 %define version 0.9.9.043
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -89,6 +89,7 @@ export CFLAGS="%{optflags} -leet"
   --enable-small-dither-mask \
   --enable-fontconfig \
   --enable-software-x11 \
+  --enable-software-16-x11 \
   --enable-software-xcb \
   --enable-software-sdl \
   --enable-directfb \
