@@ -1,6 +1,6 @@
 %define	name	evas
-%define version 0.9.9.042
-%define release %mkrel 4
+%define version 0.9.9.043
+%define release %mkrel 1
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -52,21 +52,24 @@ images, alpha-blend objects much and more.
 
 This package is part of the Enlightenment DR17 desktop shell.
 
-%package -n %{libname}-devel
+%package -n %libnamedev
 Summary: Enlightened Canvas Library headers and development libraries
 Group: System/Libraries
 Requires: %{libname} = 2:%{version}
 Provides: %{name}-devel = 2:%{version}-%{release}
 Conflicts:	%{mklibname evas1}-devel
 Requires: edb-devel png-devel eet-devel
+Obsoletes: %mklibname -d evas 0
 
-%description -n %{libname}-devel
+%description -n %libnamedev
 Evas development headers and development libraries.
 
 %prep
 %setup -q
 
 %build
+NOCONFIGURE=1 ./autogen.sh
+export CFLAGS="%{optflags} -leet"
 %configure2_5x --enable-image-loader-gif \
   --disable-valgrind \
   --enable-image-loader-png \
@@ -101,7 +104,7 @@ Evas development headers and development libraries.
 
 %install
 rm -fr %buildroot
-%makeinstall
+%makeinstall_std
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -117,7 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%name/modules/loaders/*/*/*.so
 %{_libdir}/%name/modules/savers/*/*/*.so
 
-%files -n %{libname}-devel
+%files -n %libnamedev
 %defattr(-,root,root)
 %{_libdir}/libevas.so
 %{_libdir}/libevas.*a
