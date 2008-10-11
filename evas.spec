@@ -1,6 +1,6 @@
 %define	name	evas
-%define version 0.9.9.043
-%define release %mkrel 4
+%define version 0.9.9.050
+%define release %mkrel 1
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -23,7 +23,7 @@ BuildRequires: 	X11-devel
 BuildRequires: 	eet-devel >= 0.9.10.042
 BuildRequires: 	edb-devel >= 1.0.5.042
 BuildRequires:	cairo-devel 
-Buildrequires:  libxcb-devel
+Buildrequires:  xcb-devel
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
 Buildrequires:  mesagl-devel
@@ -116,7 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
-%{_libdir}/libevas.so.*
+%{_libdir}/libevas.so.0*
 %{_libdir}/%name/modules/engines/*/*/*.so
 %{_libdir}/%name/modules/loaders/*/*/*.so
 %{_libdir}/%name/modules/savers/*/*/*.so
