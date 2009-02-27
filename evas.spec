@@ -28,7 +28,7 @@ BuildRequires:	png-devel, jpeg-devel
 Buildrequires:	tiff-devel
 Buildrequires:  mesagl-devel
 BuildRequires:	glitz-devel, ungif-devel, xpm-devel
-Buildrequires:	xcb-devel pixman-devel xcb-util-devel
+Buildrequires:	xcb-devel pixman-devel libxcb-util-devel
 
 %description
 Evas is a clean display canvas API for several target display systems
