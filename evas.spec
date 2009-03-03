@@ -98,6 +98,12 @@ export CFLAGS="%{optflags} -leet"
   --enable-xrender-xcb \
   --enable-pthreads \
   --enable-glitz-x11
+
+# fix libtool issue on release < 2009.1
+%if %mdkversion < 200910
+perl -pi -e "s/^ECHO.*/ECHO='echo'\necho='echo'\n/" libtool
+%endif
+
 %make
 
 %install
