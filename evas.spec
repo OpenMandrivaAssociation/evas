@@ -1,6 +1,6 @@
 %define	name	evas
-%define version 0.9.9.050
-%define release %mkrel 3
+%define version 0.9.9.060
+%define release %mkrel 1
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -67,8 +67,6 @@ Evas development headers and development libraries.
 %setup -q
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-export CFLAGS="%{optflags} -leet"
 %configure2_5x --enable-image-loader-gif \
   --disable-valgrind \
   --enable-image-loader-png \
@@ -123,7 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
-%{_libdir}/libevas.so.0*
+%{_libdir}/*.so.0*
 %{_libdir}/%name/modules/engines/*/*/*.so
 %{_libdir}/%name/modules/loaders/*/*/*.so
 %{_libdir}/%name/modules/savers/*/*/*.so
