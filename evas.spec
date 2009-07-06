@@ -118,6 +118,11 @@ rm -fr %buildroot
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%files
+%defattr(-,root,root)
+%{_bindir}/evas_cserve
+%{_bindir}/evas_cserve_tool
+
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
