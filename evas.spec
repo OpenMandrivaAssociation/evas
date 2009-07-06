@@ -1,5 +1,5 @@
 %define	name	evas
-%define version 0.9.9.060
+%define version 0.9.9.061
 %define release %mkrel 1
 
 %define major 0
