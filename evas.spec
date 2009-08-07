@@ -1,6 +1,6 @@
 %define	name	evas
 %define version 0.9.9.062
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -20,6 +20,7 @@ Conflicts:	%{mklibname evas1}-devel
 
 BuildRequires: 	freetype-devel
 BuildRequires: 	X11-devel
+BuildRequires:	SDL-devel
 BuildRequires:	eina-devel >= 0.0.2.062
 BuildRequires: 	eet-devel >= 1.1.0
 BuildRequires: 	edb-devel >= 1.0.5.042
@@ -88,6 +89,7 @@ Evas development headers and development libraries.
   --enable-software-x11 \
   --enable-software-16-x11 \
   --enable-software-xcb \
+  --enable-software-sdl \
   --enable-fb \
   --enable-buffer \
   --enable-gl-x11 \
