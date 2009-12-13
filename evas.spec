@@ -1,6 +1,6 @@
 %define	name	evas
-%define version 0.9.9.062
-%define release %mkrel 4
+%define version 0.9.9.063
+%define release %mkrel 1
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -23,14 +23,15 @@ BuildRequires: 	X11-devel
 BuildRequires:	SDL-devel
 BuildRequires:	cairo-devel
 BuildRequires:	fribidi-devel
-BuildRequires:	eina-devel >= 0.0.2.062
-BuildRequires: 	eet-devel >= 1.1.0
+BuildRequires:	eina-devel >= 0.0.2.063
+BuildRequires: 	eet-devel >= 1.2.3
 BuildRequires: 	edb-devel >= 1.0.5.042
 BuildRequires:	cairo-devel 
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
+BuildRequires:	librsvg-devel
 Buildrequires:  mesagl-devel
-BuildRequires:	glitz-devel, ungif-devel, xpm-devel
+BuildRequires:	ungif-devel, xpm-devel
 Buildrequires:	xcb-devel pixman-devel libxcb-util-devel
 
 %description
@@ -88,7 +89,7 @@ Evas development headers and development libraries.
   --enable-convert-yuv \
   --enable-small-dither-mask \
   --enable-fontconfig \
-  --enable-software-x11 \
+  --enable-software-xlib \
   --enable-software-16-x11 \
   --enable-software-xcb \
   --enable-software-sdl \
@@ -98,8 +99,7 @@ Evas development headers and development libraries.
   --disable-gl-glew \
   --enable-xrender-x11 \
   --enable-xrender-xcb \
-  --enable-pthreads \
-  --enable-glitz-x11
+  --enable-pthreads
 
 # fix libtool issue on release < 2009.1
 %if %mdkversion < 200910
