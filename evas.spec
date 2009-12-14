@@ -1,6 +1,6 @@
 %define	name	evas
 %define version 0.9.9.063
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -61,7 +61,6 @@ Group: System/Libraries
 Requires: %{libname} = 2:%{version}
 Provides: %{name}-devel = 2:%{version}-%{release}
 Conflicts:	%{mklibname evas1}-devel
-Requires: edb-devel png-devel eet-devel
 Obsoletes: %mklibname -d evas 0
 
 %description -n %libnamedev
