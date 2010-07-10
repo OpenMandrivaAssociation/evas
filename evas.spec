@@ -123,6 +123,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
+%{_datadir}/evas
 %{_bindir}/evas_cserve
 %{_bindir}/evas_cserve_tool
 
