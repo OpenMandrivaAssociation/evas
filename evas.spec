@@ -1,6 +1,6 @@
 %define	name	evas
 %define version 1.0.0
-%define release %mkrel -c beta 1
+%define release %mkrel -c beta 2
 
 %define major 1
 %define libname %mklibname %{name} %major
@@ -46,7 +46,6 @@ This package is part of the Enlightenment DR17 desktop shell.
 %package -n %{libname}
 Summary: Enlightened Canvas Libraries
 Group: System/Libraries
-Conflicts:	%{mklibname evas1}
 
 %description -n %{libname}
 Evas canvas libraries.
