@@ -1,8 +1,8 @@
 %define	name	evas
-%define version 0.9.9.49898
-%define release %mkrel 1
+%define version 1.0.0
+%define release %mkrel -c beta 1
 
-%define major 0
+%define major 1
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} -d
 
@@ -14,18 +14,20 @@ Release: 	%{release}
 License: 	BSD
 Group: 		Graphical desktop/Enlightenment
 URL: 		http://www.enlightenment.org/
-Source: 	%{name}-%{version}.tar.bz2
+Source: 	http://download.enlightenment.org/releases/%{name}-%{version}.beta.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 Conflicts:	%{mklibname evas1}-devel
 
 BuildRequires: 	freetype-devel
-BuildRequires: 	X11-devel
+BuildRequires: 	libx11-devel
+BuildRequires:	libxext-devel
+BuildRequires:	libxrender-devel
 BuildRequires:	SDL-devel
 BuildRequires:	cairo-devel
 BuildRequires:	fribidi-devel
-BuildRequires:	eina-devel >= 0.0.2.063
-BuildRequires: 	eet-devel >= 1.2.3
-BuildRequires: 	edb-devel >= 1.0.5.042
+BuildRequires:	eina-devel >= 1.0.0
+BuildRequires: 	eet-devel >= 1.4.0
+BuildRequires:	edb-devel >= 1.0.5.042
 BuildRequires:	cairo-devel 
 BuildRequires:	png-devel, jpeg-devel 
 Buildrequires:	tiff-devel
@@ -67,7 +69,7 @@ Obsoletes: %mklibname -d evas 0
 Evas development headers and development libraries.
 
 %prep
-%setup -q
+%setup -qn %{name}-%{version}.beta
 
 %build
 %configure2_5x --enable-image-loader-gif \
@@ -130,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %{libname}
 %defattr(-,root,root)
 %doc AUTHORS COPYING README
-%{_libdir}/*.so.0*
+%{_libdir}/*.so.%{major}*
 %{_libdir}/%name/modules/engines/*/*/*.so
 %{_libdir}/%name/modules/loaders/*/*/*.so
 %{_libdir}/%name/modules/savers/*/*/*.so
@@ -142,5 +144,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%name/modules/savers/*/*/*.*a
 %{_libdir}/%name/modules/loaders/*/*/*.*a
 %{_libdir}/%name/modules/engines/*/*/*.*a
-%{_includedir}/*.h
+%{_includedir}/*
 %{_libdir}/pkgconfig/*
