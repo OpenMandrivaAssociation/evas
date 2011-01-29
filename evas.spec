@@ -1,6 +1,6 @@
 %define	name	evas
 %define version 1.0.0
-%define release %mkrel -c beta3 2
+%define release %mkrel 1
 
 %define major 1
 %define libname %mklibname %{name} %major
@@ -14,7 +14,7 @@ Release: 	%{release}
 License: 	BSD
 Group: 		Graphical desktop/Enlightenment
 URL: 		http://www.enlightenment.org/
-Source: 	http://download.enlightenment.org/releases/%{name}-%{version}.beta3.tar.bz2
+Source: 	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 Conflicts:	%{mklibname evas1}-devel
 
@@ -68,7 +68,7 @@ Obsoletes: %mklibname -d evas 0
 Evas development headers and development libraries.
 
 %prep
-%setup -qn %{name}-%{version}.beta3
+%setup -qn %{name}-%{version}
 
 %build
 %configure2_5x --enable-image-loader-gif \
