@@ -1,40 +1,72 @@
-%define	name	evas
-%define version 1.0.1
-%define release %mkrel 1
+#Tarball of svn snapshot created as follows...
+#Cut and paste in a shell after removing initial #
 
-%define major 1
-%define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} -d
+#svn co http://svn.enlightenment.org/svn/e/trunk/evas evas; \
+#cd evas; \
+#SVNREV=$(LANGUAGE=C svn info | grep "Last Changed Rev:" | cut -d: -f 2 | sed "s@ @@"); \
+#v_maj=$(cat configure.ac | grep 'm4_define(\[v_maj\],' | cut -d' ' -f 2 | cut -d[ -f 2 | cut -d] -f 1); \
+#v_min=$(cat configure.ac | grep 'm4_define(\[v_min\],' | cut -d' ' -f 2 | cut -d[ -f 2 | cut -d] -f 1); \
+#v_mic=$(cat configure.ac | grep 'm4_define(\[v_mic\],' | cut -d' ' -f 2 | cut -d[ -f 2 | cut -d] -f 1); \
+#PKG_VERSION=$v_maj.$v_min.$v_mic.$SVNREV; \
+#cd ..; \
+#tar -Jcf evas-$PKG_VERSION.tar.xz evas/ --exclude .svn --exclude .*ignore
+
+%define snapshot 1
+%if %{snapshot}
+%define	svndate	20120103
+%define	svnrev	66798
+%endif
+
+%define	major 1
+%define	libname %mklibname %{name} %{major}
+%define	develname %mklibname %{name} -d
 
 Summary: 	Enlightened canvas library
-Name: 		%{name}
-Version: 	%{version}
+Name:		evas
 Epoch:		2
-Release: 	%{release}
-License: 	BSD
-Group: 		Graphical desktop/Enlightenment
-URL: 		http://www.enlightenment.org/
-Source: 	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
-Conflicts:	%{mklibname evas1}-devel
+%if %{snapshot}
+Version:	1.1.99.%{svnrev}
+Release:	0.%{svndate}.1
+%else
+Version:	1.1.0
+Release:	1
+%endif
+License:	BSD
+Group:		Graphical desktop/Enlightenment
+URL:		http://www.enlightenment.org/
+%if %{snapshot}
+Source0:	%{name}-%{version}.tar.xz
+%else
+Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
+%endif
 
-BuildRequires: 	freetype-devel
-BuildRequires: 	libx11-devel
-BuildRequires:	libxext-devel
-BuildRequires:	libxrender-devel
-BuildRequires:	SDL-devel
-BuildRequires:	cairo-devel
-BuildRequires:	fribidi-devel
-BuildRequires:	eina-devel >= 1.0.0
-BuildRequires: 	eet-devel >= 1.4.0
-BuildRequires:	edb-devel >= 1.0.5.042
-BuildRequires:	cairo-devel 
-BuildRequires:	png-devel, jpeg-devel 
-Buildrequires:	tiff-devel
-BuildRequires:	librsvg-devel
-Buildrequires:  mesagl-devel
-BuildRequires:	ungif-devel, xpm-devel
-Buildrequires:	xcb-devel pixman-devel libxcb-util-devel
+BuildRequires: chrpath
+BuildRequires: doxygen
+BuildRequires: xz
+BuildRequires: jpeg-devel
+BuildRequires: pth-devel
+BuildRequires: giflib-devel
+BuildRequires: ungif-devel
+BuildRequires: pkgconfig(cairo)
+BuildRequires: pkgconfig(edb)
+BuildRequires: pkgconfig(eet) >= 1.4.0
+BuildRequires: pkgconfig(freetype2)
+BuildRequires: pkgconfig(gl)
+BuildRequires: pkgconfig(ice)
+BuildRequires: pkgconfig(libpng15)
+BuildRequires: pkgconfig(librsvg-2.0)
+BuildRequires: pkgconfig(libtiff-4)
+BuildRequires: pkgconfig(pixman-1)
+BuildRequires: pkgconfig(sdl)
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(xcb)
+BuildRequires: pkgconfig(xcb-util)
+BuildRequires: pkgconfig(xext)
+BuildRequires: pkgconfig(xrender)
+BuildRequires: pkgconfig(xpm)
+
+Conflicts: %{_lib}evas1-devel
+Conflicts: %{_lib}evas1 < 1.1.99.66798-0.20120103.1
 
 %description
 Evas is a clean display canvas API for several target display systems
@@ -44,8 +76,8 @@ images, alpha-blend objects much and more.
 This package is part of the Enlightenment DR17 desktop shell.
 
 %package -n %{libname}
-Summary: Enlightened Canvas Libraries
-Group: System/Libraries
+Summary:	Enlightened Canvas Libraries
+Group:		System/Libraries
 
 %description -n %{libname}
 Evas canvas libraries.
@@ -56,92 +88,88 @@ images, alpha-blend objects much and more.
 
 This package is part of the Enlightenment DR17 desktop shell.
 
-%package -n %libnamedev
-Summary: Enlightened Canvas Library headers and development libraries
-Group: System/Libraries
-Requires: %{libname} = 2:%{version}
-Provides: %{name}-devel = 2:%{version}-%{release}
-Conflicts:	%{mklibname evas1}-devel
-Obsoletes: %mklibname -d evas 0
+%package -n %{develname}
+Summary:	Enlightened Canvas Library headers and development libraries
+Group:		System/Libraries
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{_lib}evas0-devel
+Conflicts:	%{_lib}evas1-devel
 
-%description -n %libnamedev
+%description -n %{develname}
 Evas development headers and development libraries.
 
 %prep
-%setup -qn %{name}-%{version}
+%if %{snapshot}
+%setup -qn %{name}
+%else
+%setup -q
+%endif
 
 %build
-%configure2_5x --enable-image-loader-gif \
-  --disable-valgrind \
-  --enable-image-loader-png \
-  --enable-image-loader-jpeg \
-  --enable-image-loader-eet \
-  --enable-font-loader-eet \
-  --enable-image-loader-edb \
-  --enable-image-loader-tiff \
-  --enable-image-loader-xpm \
-  --enable-image-loader-svg \
-  --enable-cpu-mmx \
-  --enable-cpu-sse \
-  --enable-cpu-c \
-  --enable-scale-sample \
-  --enable-scale-smooth \
-  --enable-convert-yuv \
-  --enable-small-dither-mask \
-  --enable-fontconfig \
-  --enable-software-xlib \
-  --enable-software-16-x11 \
-  --enable-software-xcb \
-  --enable-software-sdl \
-  --enable-fb \
-  --enable-buffer \
-  --enable-gl-x11 \
-  --disable-gl-glew \
-  --enable-xrender-x11 \
-  --enable-xrender-xcb \
-  --enable-pthreads
+sed -i 's|bzip2|xz|g' config*
+sed -i 's|bzip2|xz|g' Makefile*
+sed -i 's|bzip2|xz|g' doc/Makefile*
+sed -i 's|bz2|xz|g' Makefile*
+sed -i 's|bz2|xz|g' doc/Makefile*
 
-# fix libtool issue on release < 2009.1
-%if %mdkversion < 200910
-perl -pi -e "s/^ECHO.*/ECHO='echo'\necho='echo'\n/" libtool
+%if %{snapshot}
+NOCONFIGURE=yes ./autogen.sh
 %endif
 
-%make
+%configure2_5x \
+	--enable-image-loader-gif \
+	--disable-valgrind \
+	--enable-image-loader-png \
+	--enable-image-loader-jpeg \
+	--enable-image-loader-eet \
+	--enable-font-loader-eet \
+	--enable-image-loader-tiff \
+	--enable-image-loader-xpm \
+	--enable-image-loader-svg \
+	--enable-cpu-mmx \
+	--disable-cpu-sse \
+	--enable-cpu-c \
+	--enable-scale-sample \
+	--enable-scale-smooth \
+	--enable-convert-yuv \
+	--enable-small-dither-mask \
+	--enable-fontconfig \
+	--enable-software-xlib \
+	--enable-software-16-x11 \
+	--enable-software-sdl \
+	--enable-fb \
+	--enable-directfb \
+	--enable-buffer \
+	--enable-gl-xlib \
+	--enable-pthreads \
+	--disable-static
+
+%make 
+cd doc; %make doc
 
 %install
-rm -fr %buildroot
+rm -fr %{buildroot}
 %makeinstall_std
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
+rm -f %{buildroot}%{_libdir}/%{name}/modules/engines/software_16_sdl/*/module.a
 
 %files
-%defattr(-,root,root)
-%{_datadir}/evas
+%doc AUTHORS COPYING README
 %{_bindir}/evas_cserve
 %{_bindir}/evas_cserve_tool
+%{_libdir}/%{name}/modules/engines/*/*/*.so
+%{_libdir}/%{name}/modules/loaders/*/*/*.so
+%{_libdir}/%{name}/modules/savers/*/*/*.so
 
 %files -n %{libname}
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
 %{_libdir}/*.so.%{major}*
-%{_libdir}/%name/modules/engines/*/*/*.so
-%{_libdir}/%name/modules/loaders/*/*/*.so
-%{_libdir}/%name/modules/savers/*/*/*.so
 
-%files -n %libnamedev
-%defattr(-,root,root)
+%files -n %{develname}
 %{_libdir}/libevas.so
-%{_libdir}/libevas.*a
-%{_libdir}/%name/modules/savers/*/*/*.*a
-%{_libdir}/%name/modules/loaders/*/*/*.*a
-%{_libdir}/%name/modules/engines/*/*/*.*a
-%{_includedir}/*
+%{_includedir}/evas*
 %{_libdir}/pkgconfig/*
+%dir %{_datadir}/evas
+%dir %{_datadir}/evas/examples
+%{_datadir}/evas/examples/*
+
