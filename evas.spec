@@ -11,7 +11,7 @@
 #cd ..; \
 #tar -Jcf evas-$PKG_VERSION.tar.xz evas/ --exclude .svn --exclude .*ignore
 
-%define snapshot 1
+%define snapshot 0
 %if %{snapshot}
 %define	svndate	20120103
 %define	svnrev	66798
@@ -28,7 +28,7 @@ Epoch:		2
 Version:	1.1.99.%{svnrev}
 Release:	0.%{svndate}.1
 %else
-Version:	1.1.0
+Version:	1.2.1
 Release:	1
 %endif
 License:	BSD
@@ -37,7 +37,7 @@ URL:		http://www.enlightenment.org/
 %if %{snapshot}
 Source0:	%{name}-%{version}.tar.xz
 %else
-Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
+Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.gz
 %endif
 
 BuildRequires: chrpath
@@ -49,7 +49,7 @@ BuildRequires: giflib-devel
 BuildRequires: ungif-devel
 BuildRequires: pkgconfig(cairo)
 BuildRequires: pkgconfig(edb)
-BuildRequires: pkgconfig(eet) >= 1.4.0
+BuildRequires: pkgconfig(eet) >= 1.6.1
 BuildRequires: pkgconfig(freetype2)
 BuildRequires: pkgconfig(gl)
 BuildRequires: pkgconfig(ice)
