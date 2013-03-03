@@ -1,6 +1,7 @@
 %define	major	1
 %define	libname %mklibname %{name} %{major}
 %define	devname %mklibname %{name} -d
+%define _disable_ld_no_undefined 1
 
 Summary:	Enlightened canvas library
 Name:		evas
