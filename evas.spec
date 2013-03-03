@@ -6,12 +6,11 @@ Summary:	Enlightened canvas library
 Name:		evas
 Epoch:		2
 Version:	1.7.5
-Release:	1
+Release:	2
 License:	BSD
 Group:		Graphical desktop/Enlightenment
 URL:		http://www.enlightenment.org/
 Source0:	http://download.enlightenment.fr/releases/%{name}-%{version}.tar.bz2
-Patch0:		evas-1.7.0-esvg.patch
 
 BuildRequires:	chrpath
 BuildRequires:	doxygen
@@ -28,8 +27,7 @@ BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libpng15)
-# librsvg is no longer supported, we use esvg now for SVG support
-BuildRequires:	pkgconfig(esvg)
+BuildRequires:	pkgconfig(librsvg-2.0)
 BuildRequires:	pkgconfig(libtiff-4)
 BuildRequires:	pkgconfig(pixman-1)
 BuildRequires:	pkgconfig(sdl)
@@ -76,7 +74,6 @@ Evas development headers and development libraries.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 sed -i 's|bzip2|xz|g' config*
