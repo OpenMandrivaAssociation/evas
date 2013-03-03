@@ -1,0 +1,38 @@
+--- ./src/modules/loaders/gif/evas_image_load_gif.c.orig	2013-03-03 10:46:27.693506154 +0000
++++ ./src/modules/loaders/gif/evas_image_load_gif.c	2013-03-03 10:47:23.698508421 +0000
+@@ -700,7 +700,7 @@
+         return EINA_FALSE;
+      }
+ 
+-   gif = DGifOpenFileHandle(fd);
++   gif = DGifOpenFileHandle(fd,NULL);
+    if (!gif)
+      {
+         if (fd) close(fd);
+@@ -838,7 +838,7 @@
+         return EINA_FALSE;
+      }
+ 
+-   gif = DGifOpenFileHandle(fd);
++   gif = DGifOpenFileHandle(fd,NULL);
+    if (!gif)
+      {
+         if (fd) close(fd);
+@@ -927,7 +927,7 @@
+                   return EINA_FALSE;
+                }
+ 
+-             gif = DGifOpenFileHandle(fd);
++             gif = DGifOpenFileHandle(fd,NULL);
+              if (!gif)
+                {
+                   if (fd) close(fd);
+@@ -1000,7 +1000,7 @@
+ #endif
+    if (fd < 0) return -1;
+ 
+-   gif = DGifOpenFileHandle(fd);
++   gif = DGifOpenFileHandle(fd,NULL);
+    if (!gif)
+      {
+         if (fd) close(fd);

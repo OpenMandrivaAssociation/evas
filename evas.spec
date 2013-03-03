@@ -12,7 +12,7 @@ License:	BSD
 Group:		Graphical desktop/Enlightenment
 URL:		http://www.enlightenment.org/
 Source0:	http://download.enlightenment.fr/releases/%{name}-%{version}.tar.bz2
-
+Patch1:		evas-1.7.5-giflib5.patch
 BuildRequires:	chrpath
 BuildRequires:	doxygen
 BuildRequires:	xz
@@ -75,6 +75,7 @@ Evas development headers and development libraries.
 
 %prep
 %setup -q
+%patch1 -p0
 
 %build
 sed -i 's|bzip2|xz|g' config*
