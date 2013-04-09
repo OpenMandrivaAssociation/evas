@@ -6,8 +6,8 @@
 Summary:	Enlightened canvas library
 Name:		evas
 Epoch:		2
-Version:	1.7.5
-Release:	2
+Version:	1.7.6.1
+Release:	1
 License:	BSD
 Group:		Graphical desktop/Enlightenment
 URL:		http://www.enlightenment.org/
