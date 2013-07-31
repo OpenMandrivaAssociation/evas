@@ -6,7 +6,7 @@
 Summary:	Enlightened canvas library
 Name:		evas
 Epoch:		2
-Version:	1.7.7
+Version:	1.7.8
 Release:	1
 License:	BSD
 Group:		Graphical desktop/Enlightenment
@@ -132,7 +132,7 @@ rm -f %{buildroot}%{_libdir}/%{name}/modules/engines/software_16_sdl/*/module.a
 %{_datadir}/%{name}/checkme
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}*
+%{_libdir}/libevas.so.%{major}*
 
 %files -n %{devname}
 %{_libdir}/libevas.so
