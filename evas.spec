@@ -94,7 +94,9 @@ sed -i 's|bz2|xz|g' doc/Makefile*
 	--enable-image-loader-tiff \
 	--enable-image-loader-xpm \
 	--enable-image-loader-svg \
+%ifnarch %arm %mips
 	--enable-cpu-mmx \
+%endif
 	--disable-cpu-sse \
 	--enable-cpu-c \
 	--enable-scale-sample \
