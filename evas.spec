@@ -7,7 +7,7 @@ Summary:	Enlightened canvas library
 Name:		evas
 Epoch:		2
 Version:	1.7.8
-Release:	1
+Release:	2
 License:	BSD
 Group:		Graphical desktop/Enlightenment
 URL:		http://www.enlightenment.org/
@@ -108,7 +108,6 @@ sed -i 's|bz2|xz|g' doc/Makefile*
 	--enable-software-16-x11 \
 	--enable-gl-sdl \
 	--enable-fb \
-	--enable-directfb \
 	--enable-buffer \
 	--enable-gl-xlib \
 	--enable-pthreads \
