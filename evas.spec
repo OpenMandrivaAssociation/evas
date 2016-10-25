@@ -7,11 +7,11 @@ Summary:	Enlightened canvas library
 Name:		evas
 Epoch:		2
 Version:	1.7.8
-Release:	2
+Release:	3
 License:	BSD
 Group:		Graphical desktop/Enlightenment
 URL:		http://www.enlightenment.org/
-Source0:	http://download.enlightenment.fr/releases/%{name}-%{version}.tar.bz2
+Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
 Patch1:		evas-1.7.5-giflib5.patch
 BuildRequires:	chrpath
 BuildRequires:	doxygen
