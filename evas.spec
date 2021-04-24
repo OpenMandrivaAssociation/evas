@@ -16,7 +16,7 @@ Patch1:		evas-1.7.5-giflib5.patch
 BuildRequires:	chrpath
 BuildRequires:	doxygen
 BuildRequires:	xz
-BuildRequires:	jpeg-devel
+BuildRequires:	pkgconfig(libjpeg)
 BuildRequires:	pth-devel
 BuildRequires:	giflib-devel
 BuildRequires:	ungif-devel
@@ -84,7 +84,7 @@ sed -i 's|bzip2|xz|g' doc/Makefile*
 sed -i 's|bz2|xz|g' Makefile*
 sed -i 's|bz2|xz|g' doc/Makefile*
 
-%configure2_5x \
+%configure \
 	--enable-image-loader-gif \
 	--disable-valgrind \
 	--enable-image-loader-png \
@@ -113,20 +113,22 @@ sed -i 's|bz2|xz|g' doc/Makefile*
 	--enable-pthreads \
 	--disable-static
 
-%make 
+%make_build
 cd doc; %make doc
 
 %install
-%makeinstall_std
+%make_install
 rm -f %{buildroot}%{_libdir}/%{name}/modules/engines/software_16_sdl/*/module.a
 
 %files
 %doc AUTHORS COPYING README
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/modules
+%dir %{_libdir}/%{name}/cserve2
+%dir %{_datadir}/%{name}
 %{_bindir}/evas_cserve*
-%{_libdir}/%{name}/modules/engines/*/*/*.so
-%{_libdir}/%{name}/modules/loaders/*/*/*.so
-%{_libdir}/%{name}/modules/savers/*/*/*.so
-%{_libdir}/%{name}/cserve2/loaders/*/*/*.so
+%{_libdir}/%{name}/modules/*
+%{_libdir}/%{name}/cserve2/*
 %{_libdir}/dummy_slave
 %{_libdir}/evas_cserve2
 %{_libdir}/evas_cserve2_slave
@@ -142,4 +144,3 @@ rm -f %{buildroot}%{_libdir}/%{name}/modules/engines/software_16_sdl/*/module.a
 %dir %{_datadir}/evas
 %dir %{_datadir}/evas/examples
 %{_datadir}/evas/examples/*
-
