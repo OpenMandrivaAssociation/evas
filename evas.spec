@@ -10,7 +10,7 @@ Version:	1.7.8
 Release:	3
 License:	BSD
 Group:		Graphical desktop/Enlightenment
-URL:		http://www.enlightenment.org/
+URL:		https://www.enlightenment.org/
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
 Patch1:		evas-1.7.5-giflib5.patch
 BuildRequires:	chrpath
