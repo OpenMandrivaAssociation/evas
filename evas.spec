@@ -13,6 +13,11 @@ Group:		Graphical desktop/Enlightenment
 URL:		https://www.enlightenment.org/
 Source0:	http://download.enlightenment.org/releases/%{name}-%{version}.tar.bz2
 Patch1:		evas-1.7.5-giflib5.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	chrpath
 BuildRequires:	doxygen
 BuildRequires:	xz
